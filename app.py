@@ -27,7 +27,7 @@ uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png
 
 if uploaded_file is not None:
     # Preprocess the image
-    img1 = Image.open(uploaded_file)
+    img1 = Image.open(uploaded_file).convert('RGB')
     img = img1.resize((64, 64))  # Assuming your model expects 64x64 images
     img_array = np.array(img) / 255.0
     img_array = img_array.reshape(1, 64, 64, 3)
